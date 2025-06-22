@@ -35,7 +35,7 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(flappy flappy.c )
+add_executable(flappy flappy.c display.c)
 
 pico_set_program_name(flappy "flappy")
 pico_set_program_version(flappy "0.1")

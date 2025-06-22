@@ -2,13 +2,8 @@
 #include "pico/stdlib.h"
 #include "hardware/i2c.h"
 
-// I2C defines
-// This example will use I2C0 on GPIO8 (SDA) and GPIO9 (SCL) running at 400KHz.
-// Pins can be changed, see the GPIO function select table in the datasheet for information on GPIO assignments
-#define I2C_PORT i2c0
-#define I2C_SDA 8
-#define I2C_SCL 9
-
+#include "defs.h"
+#include "display.h"
 
 
 int main()
@@ -22,10 +17,13 @@ int main()
     gpio_set_function(I2C_SCL, GPIO_FUNC_I2C);
     gpio_pull_up(I2C_SDA);
     gpio_pull_up(I2C_SCL);
-    // For more examples of I2C use see https://github.com/raspberrypi/pico-examples/tree/master/i2c
+
+    display_initialise();
 
     while (true) {
-        printf("Hello, world!\n");
+        set_display_state(true);
+        sleep_ms(1000);
+        set_display_state(false);
         sleep_ms(1000);
     }
 }

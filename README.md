@@ -1,3 +1,3 @@
 # Flappy bird on a Pi Pico
 
-Flappy bird on a Pi Pico 2, written in C. This project is itself used as a stepping stone to come up with the algorithm, where the final aim is to write it in raw assembly.
+Flappy bird on a Pi Pico 2, written in C, with the goal of writing it in raw assembly in the future. Uses an SSD1306 display.
