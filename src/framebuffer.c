@@ -2,8 +2,10 @@
 
 uint8_t bufferPages[DISPLAY_PAGE_COUNT][DISPLAY_BYTES_PER_PAGE];
 
+/// @brief Initialises the buffer
 void buffer_initialise() {
-    // Zero out the buffer
+    // Zero out the buffer. This isn't exactly needed as bufferPages is zeroed out already
+    // when it is initialised, but it is still good to have.
     memset(bufferPages, 0x00, sizeof(uint8_t) * DISPLAY_BYTES_PER_PAGE * DISPLAY_PAGE_COUNT);
 }
 

@@ -17,12 +17,9 @@ int main() {
     gpio_pull_up(I2C_SDA);
     gpio_pull_up(I2C_SCL);
 
+    // Initialise the display, set it blank
     buffer_initialise();
     display_initialise();
-
-    // Switch on pixel (0, 0)
-    buffer_set_pixel_state(0, 0, 0);
-
     display_write(bufferPages);
 
     while (true) {
