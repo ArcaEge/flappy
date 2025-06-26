@@ -36,8 +36,44 @@ void buffer_set_pixel_state(uint8_t x, uint8_t y, bool state) {
         uint8_t bitmask = 0b00000001 << bitInByte;
         bufferPages[pageNo][x] |= bitmask;
     } else {
-        uint8_t bitmask = ~(0b00000001 << bitInByte);   // Invert bitmask
+        uint8_t bitmask = ~(0b00000001 << bitInByte);  // Invert bitmask
         bufferPages[pageNo][x] &= bitmask;
+    }
+}
+
+/// @brief Write a bitmap to the framebuffer at specified x and y coordinates (only writes the white pixels). Bitmap must be 8 pixels wide
+/// @param bitmap The pointer to the bitmap
+/// @param height Height of the bitmap in pixels
+/// @param x The x-coordinate to write the bitmap at, zero-indexed. Can be negative or greater than the display's width
+/// @param y The y-coordinate to write the bitmap at, zero-indexed. Can be negative or greater than the display's height
+/// @param erase If true, sets the pixels off instead of on
+void buffer_write_bitmap(uint8_t *bitmap, uint8_t height, int x, int y, bool erase) {
+    const bool not_erase = !erase;
+
+    for (uint8_t bitmap_y = 0; bitmap_y < height; bitmap_y++) {
+        // Check if it is within bounds of the display, ignore if otherwise
+        if (y + bitmap_y < 0)
+            continue;
+        else if (y + bitmap_y >= DISPLAY_HEIGHT)
+            break;
+
+        for (uint8_t bitmap_x = 0; bitmap_x < 8; bitmap_x++) {
+            // Check if it is within bounds of the display, ignore if otherwise
+            if (x + bitmap_x < 0)
+                continue;
+            else if (x + bitmap_x >= DISPLAY_WIDTH)
+                break;
+
+            uint8_t bitmap_x_inverted = 7 - bitmap_x;
+
+            // Get the value of the bitmap pixel
+            uint8_t bitmask = 0b00000001 << bitmap_x_inverted;
+            bool pixel_is_on = (bitmap[bitmap_y] & bitmask) > 0;
+            
+            if (pixel_is_on) {
+                buffer_set_pixel_state(x + bitmap_x, y + bitmap_y, not_erase);
+            }
+        }
     }
 }
 

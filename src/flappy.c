@@ -5,6 +5,7 @@
 #include "defs.h"
 #include "display.h"
 #include "framebuffer.h"
+#include "sprites.h"
 
 int main() {
     stdio_init_all();
@@ -20,6 +21,8 @@ int main() {
     // Initialise the display, set it blank
     buffer_initialise();
     display_initialise();
+
+    buffer_write_bitmap(birdFrames[0], (uint8_t)sizeof(birdFrames[0]) / sizeof(uint8_t), 0, 0, false);
     display_write(bufferPages);
 
     while (true) {
