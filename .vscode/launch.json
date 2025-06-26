@@ -16,7 +16,7 @@
                 "target/${command:raspberry-pi-pico.getTarget}.cfg"
             ],
             "svdFile": "${userHome}/.pico-sdk/sdk/2.1.1/src/${command:raspberry-pi-pico.getChip}/hardware_regs/${command:raspberry-pi-pico.getChipUppercase}.svd",
-            "runToEntryPoint": "main",
+            // "runToEntryPoint": "main", // Comment out to disable pause on main
             // Fix for no_flash binaries, where monitor reset halt doesn't do what is expected
             // Also works fine for flash binaries
             "overrideLaunchCommands": [
@@ -38,7 +38,7 @@
             "gdbPath": "${command:raspberry-pi-pico.getGDBPath}",
             "device": "${command:raspberry-pi-pico.getChipUppercase}",
             "svdFile": "${userHome}/.pico-sdk/sdk/2.1.1/src/${command:raspberry-pi-pico.getChip}/hardware_regs/${command:raspberry-pi-pico.getChipUppercase}.svd",
-            "runToEntryPoint": "main",
+            // "runToEntryPoint": "main", // Comment out to disable pause on main
             // Fix for no_flash binaries, where monitor reset halt doesn't do what is expected
             // Also works fine for flash binaries
             "overrideLaunchCommands": [
@@ -64,7 +64,7 @@
                 "limit": 4
             },
             "preLaunchTask": "Flash",
-            "svdPath": "${userHome}/.pico-sdk/sdk/2.1.1/src/${command:raspberry-pi-pico.getChip}/hardware_regs/${command:raspberry-pi-pico.getChipUppercase}.svd"
+            "svdPath": "${userHome}/.pico-sdk/sdk/2.1.1/src/${command:raspberry-pi-pico.getChip}/hardware_regs/${command:raspberry-pi-pico.getChipUppercase}.svd",
         },
     ]
 }
