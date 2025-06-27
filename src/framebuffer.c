@@ -69,7 +69,7 @@ void buffer_write_bitmap(uint8_t *bitmap, uint8_t height, int x, int y, bool era
             // Get the value of the bitmap pixel
             uint8_t bitmask = 0b00000001 << bitmap_x_inverted;
             bool pixel_is_on = (bitmap[bitmap_y] & bitmask) > 0;
-            
+
             if (pixel_is_on) {
                 buffer_set_pixel_state(x + bitmap_x, y + bitmap_y, not_erase);
             }

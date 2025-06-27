@@ -4,6 +4,14 @@
 void display_initialise() {
     printf("--- Initialisation ---\n");
 
+    // I2C Initialisation. Using it at 1MHz for fun, it seems to handle it just fine up to 3MHz :)
+    i2c_init(I2C_PORT, 1000 * 1000);
+
+    gpio_set_function(I2C_SDA, GPIO_FUNC_I2C);
+    gpio_set_function(I2C_SCL, GPIO_FUNC_I2C);
+    gpio_pull_up(I2C_SDA);
+    gpio_pull_up(I2C_SCL);
+
     int res = _display_write_command(DISPLAY_STATE | 0);
     printf("I2C connection succeeded: %s\n", res >= 0 ? "yes" : "no");
 

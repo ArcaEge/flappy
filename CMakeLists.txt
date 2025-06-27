@@ -37,6 +37,8 @@ pico_sdk_init()
 add_executable(flappy src/flappy.c
                 src/display.c
                 src/framebuffer.c
+                src/game_engine.c
+                src/input_handler.c
             )
 
 pico_set_program_name(flappy "flappy")
