@@ -47,8 +47,9 @@ void buffer_set_pixel_state(uint8_t x, uint8_t y, bool state) {
 /// @param x The x-coordinate to write the bitmap at, zero-indexed. Can be negative or greater than the display's width
 /// @param y The y-coordinate to write the bitmap at, zero-indexed. Can be negative or greater than the display's height
 /// @param erase If true, sets the pixels off instead of on
-void buffer_write_bitmap(uint8_t *bitmap, uint8_t height, int x, int y, bool erase) {
-    const bool not_erase = !erase;
+/// @returns Number of pixels that were already on (can be used for collision checking, returns zero if erase == true)
+uint buffer_write_bitmap(uint8_t *bitmap, uint8_t height, int x, int y, bool erase) {
+    uint pixels_already_on = 0;
 
     for (uint8_t bitmap_y = 0; bitmap_y < height; bitmap_y++) {
         // Check if it is within bounds of the display, ignore if otherwise
@@ -71,10 +72,14 @@ void buffer_write_bitmap(uint8_t *bitmap, uint8_t height, int x, int y, bool era
             bool pixel_is_on = (bitmap[bitmap_y] & bitmask) > 0;
 
             if (pixel_is_on) {
-                buffer_set_pixel_state(x + bitmap_x, y + bitmap_y, not_erase);
+                if (!erase) pixels_already_on += buffer_get_pixel_state(x + bitmap_x, y + bitmap_y);
+
+                buffer_set_pixel_state(x + bitmap_x, y + bitmap_y, !erase);
             }
         }
     }
+    
+    return pixels_already_on;
 }
 
 /// @brief Converts a pixel's y-value to the page that it is in
