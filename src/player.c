@@ -32,10 +32,10 @@ void player_tick(bool buttonPressed, uint64_t engine_tick_count) {
         } else if (player_y_1024x / 1024 > (int)PLAYER_MAX_Y) {
             player_y_1024x = PLAYER_MAX_Y * 1024;
             player_is_dead = true;
-            printf("Player dead!\n");
+            printf("Player dead 💀💀\n");
         }
     }
-    
+
     buffer_write_bitmap(birdFrames[currentFrame], PLAYER_HEIGHT, player_x_1024x / 1024, player_y_1024x / 1024, false);
     buffer_draw_rectangle(70, 0, 76, 36);
     buffer_draw_rectangle(69, 37, 77, 40);
