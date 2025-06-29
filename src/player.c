@@ -30,13 +30,25 @@ void player_tick(bool buttonPressed, uint64_t engine_tick_count) {
             player_y_1024x = PLAYER_MIN_Y * 1024;
             player_velocity = 0;
         } else if (player_y_1024x / 1024 > (int)PLAYER_MAX_Y) {
-            player_y_1024x = PLAYER_MAX_Y * 1024;
-            player_is_dead = true;
-            printf("Player dead 💀💀\n");
+            _player_die();
         }
+    } else if (player_y_1024x / 1024 < (int)PLAYER_MAX_Y) {
+        if (player_velocity > 0)
+            player_velocity += PLAYER_DOWN_ACCELERATION;
+        else
+            player_velocity += PLAYER_UP_ACCELERATION;
+        player_y_1024x += player_velocity;
+    } else {
+        player_y_1024x = PLAYER_MAX_Y * 1024;
     }
 
-    buffer_write_bitmap(birdFrames[currentFrame], PLAYER_HEIGHT, player_x_1024x / 1024, player_y_1024x / 1024, false);
-    buffer_draw_rectangle(70, 0, 76, 36);
-    buffer_draw_rectangle(69, 37, 77, 40);
+    if (buffer_write_bitmap(birdFrames[currentFrame], PLAYER_HEIGHT, player_x_1024x / 1024, player_y_1024x / 1024, false))
+        _player_die();
+}
+
+void _player_die() {
+    if (player_is_dead) return;
+    player_velocity = -7000;
+    player_is_dead = true;
+    printf("Player dead 💀💀\n");
 }

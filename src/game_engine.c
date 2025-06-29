@@ -6,6 +6,7 @@ uint64_t engine_tick_count = 0;
 /// @brief Initialise the game engine
 void game_engine_initialise() {
     input_handler_initialise();
+    pipe_initialise();
 }
 
 /// @brief Starts the main loop of the game engine
@@ -26,6 +27,7 @@ void _game_engine_tick() {
     bool buttonPressed = input_handler_get_button_pressed();
 
     // Pipes
+    pipe_tick(engine_tick_count, player_is_dead);
 
     // Player
     player_tick(buttonPressed, engine_tick_count);

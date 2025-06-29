@@ -41,6 +41,7 @@ add_executable(flappy src/flappy.c
                 src/input_handler.c
                 src/player.c
                 src/sprites.c
+                src/pipe.c
             )
 
 pico_set_program_name(flappy "flappy")

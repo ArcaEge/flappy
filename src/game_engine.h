@@ -10,6 +10,7 @@
 #include "input_handler.h"
 #include "display.h"
 #include "player.h"
+#include "pipe.h"
 
 extern uint64_t engine_tick_count;
 

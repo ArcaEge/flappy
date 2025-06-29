@@ -17,3 +17,5 @@ extern int player_velocity;
 extern bool player_is_dead;
 
 void player_tick(bool buttonPressed, uint64_t engine_tick_count);
+
+void _player_die();
