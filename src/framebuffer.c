@@ -87,6 +87,19 @@ uint buffer_write_bitmap(uint8_t *bitmap, uint8_t height, int x, int y, bool era
     return pixels_already_on;
 }
 
+/// @brief Draws a rectangle to the framebuffer
+/// @param x1 Lower x-value, inclusive
+/// @param y1 Lower y-value, inclusive
+/// @param x2 Higher x-value, exclusive
+/// @param y2 Higher y-value, exclusive
+void buffer_draw_rectangle(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2) {
+    for (uint8_t y = y1; y < y2; y++) {
+        for (uint8_t x = x1; x < x2; x++) {
+            buffer_set_pixel_state(x, y, true);
+        }
+    }
+}
+
 /// @brief Converts a pixel's y-value to the page that it is in
 /// @param y The y-value of the pixel
 /// @return The index of the page that the pixel is in

@@ -16,4 +16,5 @@ Flappy bird on a Pi Pico 2 written in C, with the goal of writing it in ARM asse
 The switch is pulled up internally using the internal pull-ups of the Pico. I initially tried using the internal pulldowns, they didn't
 work (maybe I didn't read a bit of the datasheet or maybe my Pico is a little broken).
 
-Also, I'd recommend placing a 100nF cap between GPIO6 and GND for debouncing.
+~~Also, I'd recommend placing a 100nF cap between GPIO6 and GND for debouncing.~~
+Edit: bad idea, all it does is prevent some inputs from registering. Don't use a capacitor, unless it's a really small one.
