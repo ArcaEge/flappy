@@ -9,7 +9,9 @@
 #include "defs.h"
 #include "input_handler.h"
 #include "display.h"
-#include "framebuffer.h"
+#include "player.h"
+
+extern uint64_t engine_tick_count;
 
 void game_engine_initialise();
 void game_engine_start();

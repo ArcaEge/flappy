@@ -17,5 +17,11 @@
 #define INPUT_BUTTON_GPIO 6
 
 // Game engine
-#define GAME_ENGINE_TICKS_PER_SECOND 20
+#define GAME_ENGINE_TICKS_PER_SECOND 60
 #define GAME_ENGINE_TICK_PERIOD (1000 / GAME_ENGINE_TICKS_PER_SECOND)   // Tick period in ms
+
+// Player
+#define PLAYER_DOWN_ACCELERATION 150  // Acceleration when velocity > 0
+#define PLAYER_UP_ACCELERATION 500    // Acceleration when velocity < 0
+#define PLAYER_JUMP_VELOCITY -3000
+#define PLAYER_MAX_VELOCITY 10000
