@@ -22,18 +22,20 @@
 
 // Player
 #define PLAYER_DOWN_ACCELERATION 80  // Acceleration when velocity > 0
-#define PLAYER_UP_ACCELERATION 500    // Acceleration when velocity < 0
+#define PLAYER_UP_ACCELERATION 500   // Acceleration when velocity < 0
 #define PLAYER_JUMP_VELOCITY -3100
 #define PLAYER_MAX_VELOCITY 3000
 #define PLAYER_ANIMATION_FRAME_COUNT 3
 #define PLAYER_ANIMATION_FRAME_LENGTH_TICKS 6
+#define PLAYER_DEATH_WAIT_TIME_US 2500 * 1000  // 2.5 seconds
+#define PLAYER_DEATH_JUMP_VELOCITY 7000
 
 // Pipes
-#define PIPE_NARROW_WIDTH 6             // Width of the narrow bit
-#define PIPE_WIDE_WIDTH 8               // Width of the wide bit
-#define PIPE_WIDE_HEIGHT 3              // Height of the wide bit
-#define PIPE_SPACING DISPLAY_WIDTH / 3  // Distance between pipes
-#define PIPE_SPEED 800
+#define PIPE_NARROW_WIDTH 6  // Width of the narrow bit
+#define PIPE_WIDE_WIDTH 8    // Width of the wide bit
+#define PIPE_WIDE_HEIGHT 3   // Height of the wide bit
+#define PIPE_SPACING 41      // Distance between pipes
+#define PIPE_SPEED 900
 #define PIPE_SEPARATION 25
 #define PIPE_NARROW_MIN_HEIGHT 3
 #define PIPE_OFFSET (PIPE_WIDE_HEIGHT + PIPE_NARROW_MIN_HEIGHT + 1)

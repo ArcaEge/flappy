@@ -1,5 +1,6 @@
 #pragma once
 #include <pico/stdlib.h>
+#include <pico/rand.h>
 
 #include "sprites.h"
 #include "defs.h"
@@ -18,6 +19,7 @@ struct pipe_t {
 extern struct pipe_t pipes[PIPE_COUNT];
 
 void pipe_initialise();
-void pipe_tick(uint64_t engine_tick_count, bool player_is_dead);
+void pipe_tick(uint64_t engine_tick_count, bool player_is_dead, bool player_activated);
 
 void _pipe_draw(struct pipe_t pipe);
+struct pipe_t _pipe_generate();

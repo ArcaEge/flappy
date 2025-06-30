@@ -1,6 +1,7 @@
 #pragma once
 
 #include <pico/stdlib.h>
+#include <pico/time.h>
 
 #include "sprites.h"
 #include "defs.h"
@@ -15,6 +16,8 @@ extern const int player_x_1024x;
 extern int player_y_1024x;
 extern int player_velocity;
 extern bool player_is_dead;
+extern bool player_activated;
+extern uint64_t player_death_reset_timestamp;
 
 void player_tick(bool buttonPressed, uint64_t engine_tick_count);
 

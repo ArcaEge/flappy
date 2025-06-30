@@ -27,7 +27,7 @@ void _game_engine_tick() {
     bool buttonPressed = input_handler_get_button_pressed();
 
     // Pipes
-    pipe_tick(engine_tick_count, player_is_dead);
+    pipe_tick(engine_tick_count, player_is_dead, player_activated);
 
     // Player
     player_tick(buttonPressed, engine_tick_count);

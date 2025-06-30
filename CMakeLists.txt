@@ -53,7 +53,10 @@ pico_enable_stdio_usb(flappy 0)
 
 # Add the standard library to the build
 target_link_libraries(flappy
-        pico_stdlib)
+        pico_stdlib
+        pico_rand
+        pico_time
+        )
 
 # Add the standard include files to the build
 target_include_directories(flappy PRIVATE
