@@ -4,6 +4,8 @@ Flappy bird on a Pi Pico 2 written in C, with the goal of writing it in ARM asse
 
 ![Photo of SSD1306 with flappy bird running on it](assets/image.jpeg)
 
+Here's a [link to the demo video](assets/demo-video.mp4).
+
 Almost anything you'd want to customise is in `src/defs.h`
 
 Features:
