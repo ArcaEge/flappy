@@ -2,12 +2,13 @@
 
 int pipe_furthest_x = 0;
 struct pipe_t pipes[PIPE_COUNT];
+struct pipe_t pipe = {130 * 1024, PIPE_HEIGHT_MAX};
 
 void pipe_initialise() {
 }
 
 void pipe_tick(uint64_t engine_tick_count, bool player_is_dead) {
-    struct pipe_t pipe = {80 * 1024, PIPE_HEIGHT_MAX};
+    pipe.x_1024x -= PIPE_SPEED;
     _pipe_draw(pipe);
 }
 

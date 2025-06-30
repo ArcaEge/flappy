@@ -83,18 +83,20 @@ uint buffer_write_bitmap(uint8_t *bitmap, uint8_t height, int x, int y, bool era
             }
         }
     }
-    
+
     return pixels_already_on;
 }
 
-/// @brief Draws a rectangle to the framebuffer
+/// @brief Draws a rectangle to the framebuffer. X-values can be outside the display's range
 /// @param x1 Lower x-value, inclusive
 /// @param y1 Lower y-value, inclusive
 /// @param x2 Higher x-value, exclusive
 /// @param y2 Higher y-value, exclusive
-void buffer_draw_rectangle(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2) {
-    for (uint8_t y = y1; y < y2; y++) {
-        for (uint8_t x = x1; x < x2; x++) {
+void buffer_draw_rectangle(int x1, int y1, int x2, int y2) {
+    for (int y = y1; y < y2; y++) {
+        for (int x = x1; x < x2 && x < DISPLAY_WIDTH; x++) {  // Break if the x-value is outside the display
+            if (x < 0) continue;                              // Skip if x is too far left
+
             buffer_set_pixel_state(x, y, true);
         }
     }
